@@ -9,8 +9,8 @@ public class Employee extends User {
     private double salary;
 
 
-    public Employee(int userId, User type, String cnic, String email, String password, String contactNo) {
-        super(userId, type, cnic, email, password, contactNo);
+    public Employee(int userId, String cnic, String email, String password, String contactNo) {
+        super(userId, cnic, email, password, contactNo);
     }
 
     // getters and setters
@@ -44,5 +44,17 @@ public class Employee extends User {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+
+    // Override Methods
+    @Override
+    public String toString() {
+        return "Employee{" + super.toString() +
+                "employeeId=" + employeeId +
+                ", joiningDate=" + joiningDate +
+                ", leaveDate=" + leaveDate +
+                ", salary=" + salary +
+                '}';
     }
 }

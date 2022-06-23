@@ -61,4 +61,16 @@ public class Stock {
     public void setPurchasePrice(double purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
+
+    // Override Methods
+    @Override
+    public String toString() {
+        return "Stock{" +
+                "stockId=" + stockId +
+                ", quantity=" + quantity +
+                ", purchaseDate=" + purchaseDate +
+                ", purchasePrice=" + purchasePrice +
+                ", items=" + items +
+                '}';
+    }
 }

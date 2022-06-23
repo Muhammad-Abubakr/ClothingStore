@@ -4,7 +4,7 @@ public class Admin extends User {
     private int adminId;
 
     public Admin(int userId, User type, String cnic, String email, String password, String contactNo) {
-        super(userId, type, cnic, email, password, contactNo);
+        super(userId, cnic, email, password, contactNo);
     }
 
 
@@ -15,6 +15,14 @@ public class Admin extends User {
 
     public void setAdminId(int adminId) {
         this.adminId = adminId;
+    }
+
+    // Override Method
+    @Override
+    public String toString() {
+        return "Admin{" + super.toString() +
+                "adminId=" + adminId +
+                '}';
     }
 }
 

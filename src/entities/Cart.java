@@ -3,29 +3,29 @@ package entities;
 import java.util.Vector;
 
 public class Cart {
-    private int cartNumber;
+    private int cartId;
     private int quantity;
     private Vector<Item> cartItems;
 
     // Constructor
-    public Cart(int cartNumber, int quantity) {
-        this.cartNumber = cartNumber;
+    public Cart(int cartId, int quantity) {
+        this.cartId = cartId;
         this.quantity = quantity;
     }
 
-    public Cart(int cartNumber, int quantity, Vector<Item> cartItems) {
-        this.cartNumber = cartNumber;
+    public Cart(int cartId, int quantity, Vector<Item> cartItems) {
+        this.cartId = cartId;
         this.quantity = quantity;
         this.cartItems = cartItems;
     }
 
     // getters and setters
-    public int getCartNumber() {
-        return cartNumber;
+    public int getCartId() {
+        return cartId;
     }
 
-    public void setCartNumber(int cartNumber) {
-        this.cartNumber = cartNumber;
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
     }
 
     public int getQuantity() {
@@ -45,4 +45,14 @@ public class Cart {
         return cartItems.contains(i) && cartItems.remove(i);
     }
 
+
+    // Override Methods
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "cartId=" + cartId +
+                ", quantity=" + quantity +
+                ", cartItems=" + cartItems.toString() +
+                '}';
+    }
 }

@@ -28,4 +28,14 @@ public class CreditCard extends PaymentMode {
     public void setCardVerificationValue(int cardVerificationValue) {
         this.cardVerificationValue = cardVerificationValue;
     }
+
+    // Override Methods
+
+    @Override
+    public String toString() {
+        return "CreditCard{" + super.toString() +
+                "creditCardNumber='" + creditCardNumber + '\'' +
+                ", cardVerificationValue=" + cardVerificationValue +
+                '}';
+    }
 }

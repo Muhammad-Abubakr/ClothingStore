@@ -48,4 +48,15 @@ public class Item {
     public void setType(String type) {
         this.type = type;
     }
+
+    // Override Methods
+    @Override
+    public String toString() {
+        return "Item{" +
+                "itemId=" + itemId +
+                ", size='" + size + '\'' +
+                ", price=" + price +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

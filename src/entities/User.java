@@ -3,15 +3,13 @@ package entities;
 public class User {
     // Attributes
     private int userId;
-    private User type;
     private String cnic;
     private String email;
     private String password;
     private String contactNo;
 
-    public User(int userId, User type, String cnic, String email, String password, String contactNo) {
+    public User(int userId, String cnic, String email, String password, String contactNo) {
         this.userId = userId;
-        this.type = type;
         this.cnic = cnic;
         this.email = email;
         this.contactNo = contactNo;
@@ -26,14 +24,6 @@ public class User {
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public User getType() {
-        return type;
-    }
-
-    public void setType(User type) {
-        this.type = type;
     }
 
     public String getCnic() {
@@ -66,5 +56,17 @@ public class User {
 
     public void setContactNo(String contactNo) {
         this.contactNo = contactNo;
+    }
+
+    // Override Methods
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", cnic='" + cnic + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", contactNo='" + contactNo + '\'' +
+                '}';
     }
 }

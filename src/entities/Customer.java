@@ -10,8 +10,8 @@ public class Customer extends User{
     private Vector<PaymentMode> paymentModes;
 
     // Constructor
-    public Customer(int userId, User type, String cnic, String email, String password, String contactNo, int customerId, String address, int frequency, Vector<PaymentMode> paymentModes) {
-        super(userId, type, cnic, email, password, contactNo);
+    public Customer(int userId, String cnic, String email, String password, String contactNo, int customerId, String address, int frequency, Vector<PaymentMode> paymentModes) {
+        super(userId, cnic, email, password, contactNo);
         this.customerId = customerId;
         this.address = address;
         this.frequency = frequency;
@@ -49,5 +49,17 @@ public class Customer extends User{
 
     public void setPaymentModes(Vector<PaymentMode> paymentModes) {
         this.paymentModes = paymentModes;
+    }
+
+
+    // Override Methods
+    @Override
+    public String toString() {
+        return "Customer{" + super.toString() +
+                "customerId=" + customerId +
+                ", address='" + address + '\'' +
+                ", frequency=" + frequency +
+                ", paymentModes=" + paymentModes.toString() +
+                '}';
     }
 }

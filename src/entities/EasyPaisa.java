@@ -27,4 +27,14 @@ public class EasyPaisa extends PaymentMode{
     public void setIBAN(String IBAN) {
         this.IBAN = IBAN;
     }
+
+    // Override Methods
+
+    @Override
+    public String toString() {
+        return "EasyPaisa{" + super.toString() +
+                "mobileNumber='" + mobileNumber + '\'' +
+                ", IBAN='" + IBAN + '\'' +
+                '}';
+    }
 }

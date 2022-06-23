@@ -50,4 +50,15 @@ public class Order {
     public void setOrderedItems(Vector<Item> orderedItems) {
         this.orderedItems = orderedItems;
     }
+
+    // Override Methods
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderNumber=" + orderNumber +
+                ", description='" + description + '\'' +
+                ", date=" + date +
+                ", orderedItems=" + orderedItems.toString() +
+                '}';
+    }
 }

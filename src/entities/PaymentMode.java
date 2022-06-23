@@ -17,4 +17,13 @@ public class PaymentMode {
     public void setPaymentModeId(int paymentModeId) {
         this.paymentModeId = paymentModeId;
     }
+
+    // Override methods
+
+    @Override
+    public String toString() {
+        return "PaymentMode{" +
+                "paymentModeId=" + paymentModeId +
+                '}';
+    }
 }
