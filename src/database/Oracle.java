@@ -9,14 +9,7 @@ import java.sql.SQLException;
 public class Oracle {
 
     // Attributes
-    // Establishing a connection
-    // con here is the object that stores the established connection details
-    private static Connection con;
-
-    /*Constructor*/
-    public Oracle() {
-        initDb();
-    }
+    private static boolean instantiated = false;
 
     // Connection details
     /* DATABASE INITIALIZER
@@ -26,21 +19,31 @@ public class Oracle {
     * username : the username for connection, that will be 'hr'
     * password : the password for connection, that will be 'hr'
     * */
-    private void initDb() {
-        System.out.println("\nInitializing Oracle Database...");
+    public static Connection initDb() {
 
-        try {
-            con = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:1521:xe",
-                    "hr",
-                    "hr"
-            );
+        if (!instantiated) {
+            System.out.println("\nInitializing Oracle Database...");
+            Connection con;
 
-            System.out.println("Connection Established with Oracle Server => hostname: @localhost , PortNumber : 1521, with SID : xe");
+            try {
+                con = DriverManager.getConnection(
+                        "jdbc:oracle:thin:@localhost:1521:xe",
+                        "hr",
+                        "hr"
+                );
 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+                instantiated = true;
+                System.out.println("Connection Established with Oracle Server => hostname: @localhost , PortNumber : 1521, with SID : xe");
+
+                return con;
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+
+        } else {
+            System.out.println("Connection has already been established!");
         }
+        return null;
     }
 
 }
