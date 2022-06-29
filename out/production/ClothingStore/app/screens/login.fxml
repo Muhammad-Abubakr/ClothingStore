@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<!--<?import org.controlsfx.control.ToggleSwitch?>-->
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.LoginController">
+   <left>
+      <GridPane alignment="CENTER" prefHeight="289.0" prefWidth="359.0" style="-fx-background-color: #D8996F;" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ImageView fx:id="branding" fitHeight="271.0" fitWidth="296.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../assets/images/ClothingStore.png" />
+               </image>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" spread="0.08">
+                     <color>
+                        <Color red="0.34210526943206787" green="0.33735379576683044" blue="0.33735379576683044" opacity="0.6299999952316284" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </ImageView>
+            <Text fill="#f4f4f4" strokeType="OUTSIDE" strokeWidth="0.0" text="Clothing Store">
+               <font>
+                  <Font name="MV Boli" size="36.0" />
+               </font>
+               <effect>
+                  <DropShadow spread="0.1">
+                     <color>
+                        <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" opacity="0.6899999976158142" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Text>
+         </children>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.30263158679008484" green="0.30263158679008484" blue="0.30263158679008484" opacity="0.6299999952316284" />
+               </color></DropShadow>
+         </effect>
+      </GridPane>
+   </left>
+   <right>
+      <BorderPane fx:id="rightContainer" prefHeight="400.0" prefWidth="240.0" BorderPane.alignment="CENTER">
+         <bottom>
+            <HBox alignment="CENTER" prefHeight="54.0" prefWidth="240.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="loginSwitcherText" text="Don't have an Account?" textFill="#6f6f6f">
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="loginSwitcherButton" mnemonicParsing="false" onAction="#sceneSwitcher" style="-fx-background-color: none;" text="Register here" textFill="#8bc6da">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </right>
+
+</BorderPane>

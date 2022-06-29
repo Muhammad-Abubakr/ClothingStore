@@ -10,6 +10,9 @@ public class Main {
         // Initializing Database
         try(Connection con = Oracle.initDb()) {
             assert con != null;
+
+            // if the connecting has been established
+            System.out.println(con.createStatement().executeQuery("SELECT * FROM ADMIN").next());
         }
 
     }

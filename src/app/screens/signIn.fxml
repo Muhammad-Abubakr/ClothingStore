@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox fx:id="signInRoot" alignment="CENTER" prefHeight="289.0" prefWidth="240.0" spacing="10.0" BorderPane.alignment="CENTER"
+      xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="app.controllers.SignInController">
+    <children>
+        <Label text="Sign In" textFill="#ae683f">
+            <font>
+                <Font name="Segoe UI Semibold" size="32.0"/>
+            </font>
+            <VBox.margin>
+                <Insets bottom="10.0" top="40.0"/>
+            </VBox.margin>
+        </Label>
+        <TextField fx:id="username" promptText="Username">
+            <cursor>
+                <Cursor fx:constant="TEXT"/>
+            </cursor>
+        </TextField>
+        <PasswordField fx:id="password" promptText="Password">
+            <cursor>
+                <Cursor fx:constant="TEXT"/>
+            </cursor>
+        </PasswordField>
+        <Button mnemonicParsing="false" onAction="#onSubmit" text="Sign In">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+            <VBox.margin>
+                <Insets top="10.0"/>
+            </VBox.margin>
+        </Button>
+
+    </children>
+    <padding>
+        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0"/>
+    </padding>
+</VBox>
