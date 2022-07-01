@@ -7,7 +7,8 @@ import javafx.scene.layout.VBox;
 public class SignUpController {
 
     // Root of SignUp
-    public VBox signUpRoot;
+    @FXML
+    private VBox signUpRoot;
 
     @FXML
     private TextField username;
