@@ -11,13 +11,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ConcurrentModificationException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -54,33 +56,37 @@ public class DashboardController implements Initializable {
     public void populateItemsPane() {
         for (Item item : items) {
 
-            VBox itemContainer = new VBox();
+            BorderPane itemModel;
+            ImageView imageContainer;
+            Label itemLabel;
+            Button addButton;
+            Button removeButton;
 
-            // ! must be replaced with background image
-//            Random random = new Random();
-//            double red = random.nextDouble(0, 1);
-//            double green = random.nextDouble(0, 1);
-//            double blue = random.nextDouble(0, 1);
-//            Paint color = new Color(red, green, blue, 1);
-            // ! end for image replacement code
+            try {
+                itemModel = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../models/item.fxml")));
+                itemLabel = (Label) ((HBox) itemModel.getBottom()).getChildren().get(0);
+                addButton = (Button) ((HBox) itemModel.getBottom()).getChildren().get(1);
+                removeButton = (Button) ((HBox) itemModel.getBottom()).getChildren().get(2);
+                imageContainer = (ImageView) itemModel.getTop();
 
-            // * Image code starts here after initializing the images array
-            System.out.println(item.getImagePath());
-            ImageView image = new ImageView(new Image(item.getImagePath()));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
-            image.setFitWidth(210);
-            image.setFitHeight(160);
 
-            // should have a button here too for adding the item to cart
-            Button button = new Button("Add to Cart");
-            button.setId(String.valueOf(item.getItemId()));
-            button.setPrefWidth(Double.MAX_VALUE);
+            // setting item Node data
+            imageContainer.setImage(new Image(item.getImagePath()));
+            itemLabel.setText("id: " + item.getItemId());
+            addButton.setId(String.valueOf(item.getItemId()));
+            removeButton.setId(String.valueOf(item.getItemId()));
 
-            button.setOnAction(e -> {
+
+            // Event Handlers
+            addButton.setOnAction(e -> {
                 // find the item (will usually query the database)
                 for (Item i :
                         items) {
-                    if (i.getItemId() == Integer.parseInt(button.getId())) {
+                    if (i.getItemId() == Integer.parseInt(addButton.getId())) {
 
                         // add the item to the cart
                         cart.add(i);
@@ -90,12 +96,24 @@ public class DashboardController implements Initializable {
                 }
             });
 
-            itemContainer.setPrefSize(210, 190);
-            itemContainer.getChildren().add(image);
-            itemContainer.getChildren().add(button);
+            removeButton.setOnAction(e -> {
+                try {
+                    if (!cart.isEmpty()) for (Item i :
+                            cart) {
+                        if (i.getItemId() == Integer.parseInt(removeButton.getId())) {
 
+                            // add the item to the cart
+                            cart.remove(i);
+                            cartLabel.setText(cart.size() + " items added to cart");
+                            System.out.println(i);
+                        }
+                    }
+                } catch (ConcurrentModificationException exception) {
+                    System.out.println("Item Removed");
+                }
+            });
 
-            itemsPane.getChildren().add(itemContainer);
+            itemsPane.getChildren().add(itemModel);
         }
 
     }

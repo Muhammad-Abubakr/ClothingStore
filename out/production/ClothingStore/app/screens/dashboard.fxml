@@ -17,17 +17,16 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.DashboardController">
+<BorderPane prefWidth="940.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.DashboardController">
    <center>
-      <GridPane fx:id="dashboardRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="191.0" minHeight="5.666667938232422" prefHeight="5.666667938232422" valignment="CENTER" vgrow="ALWAYS" />
-          <RowConstraints maxHeight="536.3333320617676" minHeight="10.0" prefHeight="536.3333320617676" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <GridPane fx:id="dashboardRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="940.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="191.0" minHeight="5.666667938232422" prefHeight="5.666667938232422" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="536.3333320617676" minHeight="10.0" prefHeight="536.3333320617676" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
             <Pane prefWidth="900.0" style="-fx-background-color: #9B836F;" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                <children>
@@ -41,7 +40,7 @@
                         <Font name="MV Boli" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="logOutButton" layoutX="802.0" layoutY="15.0" mnemonicParsing="false" onAction="#onLogOut" style="-fx-background-color: #E95D52;" text="Log Out" textFill="#f3f3f3">
+                  <Button fx:id="logOutButton" layoutX="837.0" layoutY="13.0" mnemonicParsing="false" onAction="#onLogOut" style="-fx-background-color: #E95D52;" text="Log Out" textFill="#f3f3f3">
                      <font>
                         <Font name="MV Boli" size="14.0" />
                      </font>
@@ -78,10 +77,11 @@
                   <Font name="Segoe UI" size="16.0" />
                </font>
             </Label>
-            <Button fx:id="orderButton" onAction="#placeOrder" mnemonicParsing="false" prefHeight="29.0" prefWidth="101.0" style="-fx-background-color: #E95D52;" text="Place Order" textFill="WHITE">
+            <Button fx:id="orderButton" mnemonicParsing="false" onAction="#placeOrder" prefHeight="29.0" prefWidth="101.0" style="-fx-background-color: #E95D52;" text="Place Order" textFill="WHITE">
                <font>
                   <Font name="MV Boli" size="14.0" />
-               </font>vdfd
+               </font>
+               vdfd
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
