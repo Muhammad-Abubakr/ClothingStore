@@ -1,6 +1,7 @@
 package app;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,6 +20,10 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
 
         Parent loginController = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("screens/login.fxml")));
+
+        loginController.addEventFilter(ActionEvent.ACTION, e -> {
+            System.out.println(e.getEventType().getName());
+        });
 
         Scene scene = new Scene(loginController);
 

@@ -8,12 +8,15 @@ public class Item {
     private double price;
     private String type;
 
+    private String imagePath;
+
     // Constructors
-    public Item(int itemId, String size, double price, String type) {
+    public Item(int itemId, String size, double price, String type, String imagePath) {
         this.itemId = itemId;
         this.size = size;
         this.price = price;
         this.type = type;
+        this.imagePath = imagePath;
     }
 
     // getters and setters
@@ -49,6 +52,15 @@ public class Item {
         this.type = type;
     }
 
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
     // Override Methods
     @Override
     public String toString() {
@@ -59,4 +71,5 @@ public class Item {
                 ", type='" + type + '\'' +
                 '}';
     }
+
 }

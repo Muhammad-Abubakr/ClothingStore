@@ -20,7 +20,7 @@
         <TextField promptText="email" />
         <TextField promptText="password" />
         <TextField promptText="confirm password" />
-        <Button mnemonicParsing="false" text="Sign Up">
+        <Button fx:id="signUpSubmit" mnemonicParsing="false" text="Sign Up">
             <VBox.margin>
                 <Insets top="10.0" />
             </VBox.margin>

@@ -30,7 +30,7 @@
                 <Cursor fx:constant="TEXT"/>
             </cursor>
         </PasswordField>
-        <Button mnemonicParsing="false" onAction="#onSubmit" text="Sign In">
+        <Button fx:id="signInSubmit" mnemonicParsing="false" onAction="#onSubmit" text="Sign In">
             <cursor>
                 <Cursor fx:constant="HAND"/>
             </cursor>
