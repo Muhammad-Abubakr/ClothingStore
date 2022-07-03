@@ -2,11 +2,13 @@ package app.controllers;
 
 import app.events.UserEvent;
 import entities.Item;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -41,6 +43,8 @@ public class DashboardController implements Initializable {
     @FXML
     private Button orderButton;
 
+    private Stage dialogStage = new Stage();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -50,10 +54,12 @@ public class DashboardController implements Initializable {
         }
 
         populateItemsPane();
+
+
     }
 
     // creating a method for populating the itemsPane with items
-    public void populateItemsPane() {
+    private void populateItemsPane() {
         for (Item item : items) {
 
             BorderPane itemModel;
@@ -118,13 +124,66 @@ public class DashboardController implements Initializable {
 
     }
 
-    // todo Action Handler for order button
-    public void placeOrder() {
+    // Action Handler for order button
+    @FXML
+    private void placeOrder(ActionEvent actionEvent) throws IOException {
+
+        // Loading the Order Dialog
+        Parent orderDialog = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../screens/orderDialog.fxml")));
+
+        // Creating a scene
+        Scene scene = new Scene(orderDialog);
+        dialogStage.setScene(scene);
+        dialogStage.setTitle("Order Dialog");
+        dialogStage.toFront(); // display at front
+
+        // Disable logout and order buttons when order placement is in progress
+        orderButton.setDisable(true);
+        logOutButton.setDisable(true);
+
+
+        // setting some properties and event handlers for dialog stage
+        dialogStage.setOnCloseRequest(e -> {
+
+            // Enable back the buttons for logout and order
+            orderButton.setDisable(false);
+            logOutButton.setDisable(false);
+        });
+
+        // Setting an alert when the parent window is being closed by the user
+        alertUserOnClosingDashboardWhenOrdering();
+
+        // setting the dialog stage to show and then wait for closing for getting the answer
+        dialogStage.showAndWait();
+
+        // when got the answer process it and check whether user wants to close the window or not
+        logOutButton.getScene().getWindow().setOnCloseRequest(e -> {
+            ((Stage) logOutButton.getScene().getWindow()).close();
+        });
 
     }
 
+    // Setting an alert when the parent window is being closed by the user
+    private void alertUserOnClosingDashboardWhenOrdering() {
+        logOutButton.getScene().getWindow().setOnCloseRequest(e -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+            alert.setContentText("Do you want to close the window? An order is in progress!");
+            alert.setTitle("Order placement in progress");
+            alert.setResizable(false);
+            alert.showAndWait();
+
+            if (!alert.getResult().getButtonData().name().equals("OK_DONE")) {
+                e.consume();
+            } else {
+                dialogStage.close();
+            }
+        });
+    }
+
     // Handling when the user logs out
-    public void onLogOut() {
+    @FXML
+    private void onLogOut() {
 
         // Setting the logged-in user to null to indicate no user is logged in
         logOutButton.fireEvent(new UserEvent(UserEvent.LOG_OUT, null));
@@ -142,7 +201,7 @@ public class DashboardController implements Initializable {
             throw new RuntimeException(e);
         }
 
-        // creating a new scen  e for the stage
+        // creating a new scene for the stage
         assert loginController != null;
 
         Scene scene = new Scene(loginController);
@@ -160,4 +219,5 @@ public class DashboardController implements Initializable {
         stage.close();
         rollBackStage.show();
     }
+
 }

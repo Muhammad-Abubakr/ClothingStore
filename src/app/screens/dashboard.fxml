@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.DropShadow?>
@@ -83,7 +84,6 @@
                <font>
                   <Font name="MV Boli" size="14.0"/>
                </font>
-               vdfd
                <HBox.margin>
                   <Insets left="10.0"/>
                </HBox.margin>

@@ -1,4 +1,4 @@
-package app.models;
+package app.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -79,7 +79,6 @@ public class ItemController implements Initializable {
         this.removeButton = removeButton;
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -89,7 +88,7 @@ public class ItemController implements Initializable {
     }
 
     private void setIdLabelDynamicColors() {
-        // dynamic itemModel background         color
+        // dynamic itemModel background color
         Random random = new Random();
 
         double red = random.nextDouble(0, 1);

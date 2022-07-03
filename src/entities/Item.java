@@ -7,8 +7,8 @@ public class Item {
     private String size;
     private double price;
     private String type;
-
     private String imagePath;
+
 
     // Constructors
     public Item(int itemId, String size, double price, String type, String imagePath) {

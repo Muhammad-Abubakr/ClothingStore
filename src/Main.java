@@ -1,19 +1,17 @@
-// importing the required Classes for establishing connection with OracleDB
-import database.Oracle;
+// importing the required Classes and Interface for establishing connection with OracleDB
 
-import java.sql.Connection;
+import database.ConnectionDistributor;
+
 import java.sql.SQLException;
 
-public class Main {
+public class Main implements ConnectionDistributor {
     public static void main(String[] args) throws SQLException {
 
         // Initializing Database
-        try(Connection con = Oracle.initDb()) {
-            assert con != null;
+        assert con != null;
 
-            // if the connecting has been established
-            System.out.println(con.createStatement().executeQuery("SELECT * FROM ADMIN").next());
-        }
+        // if the connecting has been established
+        System.out.println(con.createStatement().executeQuery("SELECT * FROM \"User\""));
 
     }
 }

@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Vector;
 
 public class Order {
+    private static int orderId;
     // Attributes
     private int orderNumber;
     private String description;
