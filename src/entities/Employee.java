@@ -3,23 +3,23 @@ package entities;
 import java.sql.Date;
 
 public class Employee extends User {
-    private int employeeId;
+    private final int E_ID;
     private Date joiningDate;
     private Date leaveDate;
     private double salary;
 
 
-    public Employee(int userId, String cnic, String email, String password, String contactNo) {
-        super(userId, cnic, email, password, contactNo);
+    public Employee(int U_ID, int e_ID, Date joiningDate, Date leaveDate, String type, String cnic, String password, String email, double salary) {
+        super(U_ID, type, cnic, password, email);
+        E_ID = e_ID;
+        this.joiningDate = joiningDate;
+        this.leaveDate = leaveDate;
+        this.salary = salary;
     }
 
     // getters and setters
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
+    public int getE_ID() {
+        return E_ID;
     }
 
     public Date getJoiningDate() {
@@ -51,10 +51,10 @@ public class Employee extends User {
     @Override
     public String toString() {
         return "Employee{" + super.toString() +
-                "employeeId=" + employeeId +
-                ", joiningDate=" + joiningDate +
-                ", leaveDate=" + leaveDate +
-                ", salary=" + salary +
-                '}';
+                "\n\temployeeId=" + E_ID + ",\n" +
+                "\tjoiningDate=" + joiningDate + ",\n" +
+                "\tleaveDate=" + leaveDate + ",\n" +
+                "\tsalary=" + salary + ",\n" +
+                "}";
     }
 }

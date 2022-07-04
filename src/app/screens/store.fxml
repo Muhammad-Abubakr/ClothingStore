@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.DropShadow?>
@@ -8,10 +9,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-
-
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" prefWidth="940.0" xmlns="http://javafx.com/javafx/18"
-            fx:controller="app.controllers.DashboardController">
+            fx:controller="app.controllers.StoreController">
    <center>
       <GridPane fx:id="dashboardRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
                 minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="940.0">

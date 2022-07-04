@@ -27,7 +27,6 @@ public class LoginController implements Initializable {
     private Button loginSwitcherButton;
     @FXML
     private BorderPane root;
-
     @FXML
     private ImageView branding;
 

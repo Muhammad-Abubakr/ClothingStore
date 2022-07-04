@@ -34,7 +34,7 @@ public class App extends Application {
         stage.setTitle("Clothing Store");
         stage.getIcons().add(icon);
         stage.setResizable(false);
-        stage.setAlwaysOnTop(true);
+        stage.toFront();
         stage.show();
     }
 }

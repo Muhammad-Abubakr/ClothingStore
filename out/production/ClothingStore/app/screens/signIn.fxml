@@ -22,7 +22,7 @@
                 <Insets bottom="10.0" top="40.0"/>
             </VBox.margin>
         </Label>
-        <TextField fx:id="username" promptText="Username">
+        <TextField fx:id="email" promptText="Email">
             <cursor>
                 <Cursor fx:constant="TEXT"/>
             </cursor>

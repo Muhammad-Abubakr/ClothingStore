@@ -26,7 +26,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
-public class DashboardController implements Initializable {
+public class StoreController implements Initializable {
 
     @FXML
     private GridPane dashboardRoot;
@@ -35,15 +35,15 @@ public class DashboardController implements Initializable {
     @FXML
     private Button logOutButton;
 
-    private Vector<Item> items = new Vector<>();
+    private final Vector<Item> items = new Vector<>();
 
-    private Vector<Item> cart = new Vector<>();
+    private final Vector<Item> cart = new Vector<>();
     @FXML
     private Label cartLabel;
     @FXML
     private Button orderButton;
 
-    private Stage dialogStage = new Stage();
+    private final Stage dialogStage = new Stage();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
