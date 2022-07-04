@@ -1,65 +1,59 @@
 package entities;
 
-import java.sql.Date;
-import java.util.Vector;
+import oracle.sql.TIMESTAMP;
 
 public class Order {
     private static int orderId;
     // Attributes
-    private int orderNumber;
-    private String description;
-    private Date date;
-    private Vector<Item> orderedItems;
+    private final int O_ID;
+    private final int C_ID;
+    private final int P_ID;
+
+    private TIMESTAMP dateTime;
 
     // Constructor
-    public Order(int orderNumber, String description, Date date, Vector<Item> orderedItems) {
-        this.orderNumber = orderNumber;
-        this.description = description;
-        this.date = date;
-        this.orderedItems = orderedItems;
+    public Order(int O_ID, String description, int c_id, int p_id, TIMESTAMP dateTime) {
+        C_ID = c_id;
+        P_ID = p_id;
+        this.O_ID = O_ID;
+        this.dateTime = dateTime;
     }
 
-    // getter and setter
-    public int getOrderNumber() {
-        return orderNumber;
+    public static int getOrderId() {
+        return orderId;
     }
 
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
+    public static void setOrderId(int orderId) {
+        Order.orderId = orderId;
     }
 
-    public String getDescription() {
-        return description;
+    public int getO_ID() {
+        return O_ID;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public int getC_ID() {
+        return C_ID;
     }
 
-    public Date getDate() {
-        return date;
+    public int getP_ID() {
+        return P_ID;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public TIMESTAMP getDateTime() {
+        return dateTime;
     }
 
-    public Vector<Item> getOrderedItems() {
-        return orderedItems;
+    public void setDateTime(TIMESTAMP dateTime) {
+        this.dateTime = dateTime;
     }
 
-    public void setOrderedItems(Vector<Item> orderedItems) {
-        this.orderedItems = orderedItems;
-    }
-
-    // Override Methods
     @Override
     public String toString() {
-        return "Order{" +
-                "orderNumber=" + orderNumber +
-                ", description='" + description + '\'' +
-                ", date=" + date +
-                ", orderedItems=" + orderedItems.toString() +
-                '}';
+        return "Order{\n" +
+                "\tO_ID=" + O_ID +
+                ",\n\tC_ID=" + C_ID +
+                ",\n\tP_ID=" + P_ID +
+                ",\n\tdateTime=" + dateTime +
+                "\n}";
     }
 }

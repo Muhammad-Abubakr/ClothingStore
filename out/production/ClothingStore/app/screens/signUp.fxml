@@ -15,11 +15,11 @@
                 <Insets bottom="10.0" />
             </VBox.margin>
         </Label>
-        <TextField promptText="username" />
-        <TextField promptText="email" />
-        <TextField promptText="password" />
-        <TextField promptText="confirm password" />
-        <Button fx:id="signUpSubmit" mnemonicParsing="false" text="Sign Up">
+        <TextField fx:id="username" promptText="username" />
+        <TextField fx:id="email" promptText="email" />
+        <TextField fx:id="password" promptText="password" />
+        <TextField fx:id="confirmPassword" promptText="confirm password" />
+        <Button fx:id="signUpSubmit" onAction="#addCustomer" mnemonicParsing="false" text="Sign Up">
             <VBox.margin>
                 <Insets top="10.0"/>
             </VBox.margin>

@@ -1,51 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18"
-            fx:controller="app.controllers.AdminDashboardController">
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.AdminDashboardController">
    <center>
-      <SplitPane dividerPositions="0.08351893095768374" prefHeight="160.0" prefWidth="200.0"
-                 BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.19821826280623608" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
-            <VBox maxWidth="220.0" minWidth="70.0" prefHeight="598.0" prefWidth="220.0"
-                  style="-fx-background-color: #E9E9E9;">
+            <VBox maxWidth="220.0" minWidth="70.0" prefHeight="598.0" prefWidth="220.0" style="-fx-background-color: #E9E9E9;">
                <children>
-                  <Button fx:id="analyticsButton" layoutX="10.0" layoutY="66.0" maxWidth="1.7976931348623157E308"
-                          mnemonicParsing="false" style="-fx-background-color: #E9E9E9;" text="Analytics"/>
-                  <Separator prefWidth="200.0"/>
-                  <Button fx:id="employeesButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                          onAction="#showEmployeeTab" style="-fx-background-color: #E9E9E9;" text="Employee"
-                          VBox.vgrow="ALWAYS"/>
-                  <Separator prefWidth="200.0"/>
-                  <Button fx:id="itemButton" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308"
-                          mnemonicParsing="false" style="-fx-background-color: #E9E9E9;" text="Item"/>
-                  <Separator prefWidth="200.0"/>
-                  <Button fx:id="recordButton" layoutX="10.0" layoutY="35.0" maxWidth="1.7976931348623157E308"
-                          mnemonicParsing="false" style="-fx-background-color: #E9E9E9;" text="Record"/>
-                  <Separator layoutX="10.0" layoutY="91.0" prefWidth="200.0"/>
+                  <Button fx:id="analyticsButton" layoutX="10.0" layoutY="66.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #E9E9E9;" text="Analytics" />
+                  <Separator prefWidth="200.0" />
+                  <Button fx:id="employeesButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showEmployeeTab" style="-fx-background-color: #E9E9E9;" text="Employee" VBox.vgrow="ALWAYS" />
+                  <Separator prefWidth="200.0" />
+                  <Button fx:id="itemButton" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #E9E9E9;" text="Item" />
+                  <Separator prefWidth="200.0" />
+
                </children>
             </VBox>
-            <ScrollPane fx:id="rightTabbedPane" fitToHeight="true" fitToWidth="true"/>
+            <ScrollPane fx:id="rightTabbedPane" fitToHeight="true" fitToWidth="true" />
          </items>
       </SplitPane>
    </center>
    <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="88.0" prefWidth="900.0" spacing="10.0"
-            style="-fx-background-color: #E9E9E9;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="88.0" prefWidth="900.0" spacing="10.0" style="-fx-background-color: #E9E9E9;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="53.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../assets/icons/admin.png"/>
+                  <Image url="@../../assets/icons/admin.png" />
                </image>
             </ImageView>
             <Label text="Admin Portal" textFill="#727272">
                <font>
-                  <Font name="Segoe UI" size="28.0"/>
+                  <Font name="Segoe UI" size="28.0" />
                </font>
             </Label>
          </children>
@@ -54,8 +43,7 @@
    <bottom>
       <HBox style="-fx-background-color: #E9E9E9;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="logOutButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                    style="-fx-background-color: #E9E9E9;" text="LOG OUT" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="logOutButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: #E9E9E9;" text="LOG OUT" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
    </bottom>

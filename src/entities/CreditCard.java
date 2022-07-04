@@ -1,41 +1,46 @@
 package entities;
 
+import java.sql.Date;
+
 public class CreditCard extends PaymentMode {
     // attributes
-    private String creditCardNumber;
-    private int cardVerificationValue;
+    private final int IBAN;
+    private final int P_ID;
+    private final int CVV;
+    private final Date expirationDate;
 
-    // Constructors
-    public CreditCard(int paymentModeId, String creditCardNumber, int cardVerificationValue) {
-        super(paymentModeId);
-        this.creditCardNumber = creditCardNumber;
-        this.cardVerificationValue = cardVerificationValue;
+    public CreditCard(int c_ID, int p_ID, String mode, int IBAN, int p_ID1, int CVV, Date expirationDate) {
+        super(c_ID, p_ID, mode);
+        this.IBAN = IBAN;
+        P_ID = p_ID1;
+        this.CVV = CVV;
+        this.expirationDate = expirationDate;
     }
 
-    // getter and setter
-    public String getCreditCardNumber() {
-        return creditCardNumber;
+    public int getIBAN() {
+        return IBAN;
     }
 
-    public void setCreditCardNumber(String creditCardNumber) {
-        this.creditCardNumber = creditCardNumber;
+    @Override
+    public int getP_ID() {
+        return P_ID;
     }
 
-    public int getCardVerificationValue() {
-        return cardVerificationValue;
+    public int getCVV() {
+        return CVV;
     }
 
-    public void setCardVerificationValue(int cardVerificationValue) {
-        this.cardVerificationValue = cardVerificationValue;
+    public Date getExpirationDate() {
+        return expirationDate;
     }
-
-    // Override Methods
 
     @Override
     public String toString() {
-        return "CreditCard{" + super.toString() +
-                "creditCardNumber='" + creditCardNumber + '\'' +
-                ", cardVerificationValue=" + cardVerificationValue +
-                '}';
+        return "CreditCard{\n" +
+                "\tIBAN=" + IBAN +
+                ",\n\tP_ID=" + P_ID +
+                ",\n\tCVV=" + CVV +
+                ",\n\texpirationDate=" + expirationDate +
+                "\n}";
     }
 }

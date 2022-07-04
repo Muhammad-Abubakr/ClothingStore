@@ -6,28 +6,22 @@ import java.util.Vector;
 public class Stock {
 
     // Attributes
-    private int stockId;
+    private final int ST_ID;
     private int quantity;
     private Date purchaseDate;
     private double purchasePrice;
-    private Vector<Item> items;
 
     // Constructors
-    public Stock(int stockId, int quantity, Date purchaseDate, double purchasePrice, Vector<Item> items) {
-        this.stockId = stockId;
+
+    public Stock(int ST_ID, int quantity, Date purchaseDate, double purchasePrice) {
+        this.ST_ID = ST_ID;
         this.quantity = quantity;
         this.purchaseDate = purchaseDate;
         this.purchasePrice = purchasePrice;
-        this.items = items;
     }
 
-    // getters and setters
-    public int getStockId() {
-        return stockId;
-    }
-
-    public void setStockId(int stockId) {
-        this.stockId = stockId;
+    public int getST_ID() {
+        return ST_ID;
     }
 
     public int getQuantity() {
@@ -46,14 +40,6 @@ public class Stock {
         this.purchaseDate = purchaseDate;
     }
 
-    public Vector<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(Vector<Item> items) {
-        this.items = items;
-    }
-
     public double getPurchasePrice() {
         return purchasePrice;
     }
@@ -62,15 +48,13 @@ public class Stock {
         this.purchasePrice = purchasePrice;
     }
 
-    // Override Methods
     @Override
     public String toString() {
-        return "Stock{" +
-                "stockId=" + stockId +
-                ", quantity=" + quantity +
-                ", purchaseDate=" + purchaseDate +
-                ", purchasePrice=" + purchasePrice +
-                ", items=" + items +
-                '}';
+        return "Stock{\n" +
+                "\tST_ID=" + ST_ID +
+                ",\n\tquantity=" + quantity +
+                ",\n\tpurchaseDate=" + purchaseDate +
+                ",\n\tpurchasePrice=" + purchasePrice +
+                "\n}";
     }
 }

@@ -102,7 +102,7 @@ CREATE TABLE items (
     stock_stock_id INTEGER NOT NULL
 );
 
-ALTER TABLE items ADD CONSTRAINT items_pk PRIMARY KEY ( item_id,
+ALTER TABLE GENDER ADD CONSTRAINT items_pk PRIMARY KEY ( item_id,
                                                         brand_brand_id );
 
 CREATE TABLE orders (
@@ -192,14 +192,14 @@ ALTER TABLE has
 ALTER TABLE has
     ADD CONSTRAINT has_items_fk FOREIGN KEY ( items_item_id,
                                               items_brand_brand_id )
-        REFERENCES items ( item_id,
+        REFERENCES GENDER ( item_id,
                            brand_brand_id );
 
-ALTER TABLE items
+ALTER TABLE GENDER
     ADD CONSTRAINT items_brand_fk FOREIGN KEY ( brand_brand_id )
         REFERENCES brand ( brand_id );
 
-ALTER TABLE items
+ALTER TABLE GENDER
     ADD CONSTRAINT items_stock_fk FOREIGN KEY ( stock_stock_id )
         REFERENCES stock ( stock_id );
 
@@ -218,7 +218,7 @@ ALTER TABLE payment_mode
 ALTER TABLE sales
     ADD CONSTRAINT sales_items_fk FOREIGN KEY ( items_item_id,
                                                 items_brand_brand_id )
-        REFERENCES items ( item_id,
+        REFERENCES GENDER ( item_id,
                            brand_brand_id );
 
 ALTER TABLE sales

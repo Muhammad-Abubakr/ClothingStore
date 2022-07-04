@@ -50,7 +50,7 @@ public class StoreController implements Initializable {
 
         for (int c = 0; c < 5; c++) {
             String imagePath = "/assets/images/items/" + (c + 1) + ".jpg";
-            items.add(new Item(c, "small", 200.00, "boy summer shirt", imagePath));
+            items.add(new Item(c, 12, 200.00, "boy summer shirt", imagePath));
         }
 
         populateItemsPane();
@@ -82,9 +82,9 @@ public class StoreController implements Initializable {
 
             // setting item Node data
             imageContainer.setImage(new Image(item.getImagePath()));
-            itemLabel.setText("id: " + item.getItemId());
-            addButton.setId(String.valueOf(item.getItemId()));
-            removeButton.setId(String.valueOf(item.getItemId()));
+            itemLabel.setText("id: " + item.getITM_ID());
+            addButton.setId(String.valueOf(item.getITM_ID()));
+            removeButton.setId(String.valueOf(item.getITM_ID()));
 
 
             // Event Handlers
@@ -92,7 +92,7 @@ public class StoreController implements Initializable {
                 // find the item (will usually query the database)
                 for (Item i :
                         items) {
-                    if (i.getItemId() == Integer.parseInt(addButton.getId())) {
+                    if (i.getITM_ID() == Integer.parseInt(addButton.getId())) {
 
                         // add the item to the cart
                         cart.add(i);
@@ -106,7 +106,7 @@ public class StoreController implements Initializable {
                 try {
                     if (!cart.isEmpty()) for (Item i :
                             cart) {
-                        if (i.getItemId() == Integer.parseInt(removeButton.getId())) {
+                        if (i.getITM_ID() == Integer.parseInt(removeButton.getId())) {
 
                             // add the item to the cart
                             cart.remove(i);

@@ -2,29 +2,21 @@ package entities;
 
 import java.util.Vector;
 
-public class Customer extends User{
+public class Customer extends User {
 
-    private int customerId;
+    private final int C_ID;
     private String address;
-    private int frequency;
-    private Vector<PaymentMode> paymentModes;
 
     // Constructor
-    public Customer(int userId, String cnic, String email, String password, String contactNo, int customerId, String address, int frequency, Vector<PaymentMode> paymentModes) {
+    public Customer(int userId, String cnic, String email, String password, String contactNo, int C_ID, String address) {
         super(userId, cnic, email, password, contactNo);
-        this.customerId = customerId;
+        this.C_ID = C_ID;
         this.address = address;
-        this.frequency = frequency;
-        this.paymentModes = paymentModes;
     }
 
     // getters and setters
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public int getC_ID() {
+        return C_ID;
     }
 
     public String getAddress() {
@@ -35,31 +27,11 @@ public class Customer extends User{
         this.address = address;
     }
 
-    public int getFrequency() {
-        return frequency;
-    }
-
-    public void setFrequency(int frequency) {
-        this.frequency = frequency;
-    }
-
-    public Vector<PaymentMode> getPaymentModes() {
-        return paymentModes;
-    }
-
-    public void setPaymentModes(Vector<PaymentMode> paymentModes) {
-        this.paymentModes = paymentModes;
-    }
-
-
-    // Override Methods
     @Override
     public String toString() {
-        return "Customer{" + super.toString() +
-                "customerId=" + customerId +
-                ", address='" + address + '\'' +
-                ", frequency=" + frequency +
-                ", paymentModes=" + paymentModes.toString() +
-                '}';
+        return "Customer{\n" + super.toString() +
+                "\n\tC_ID=" + C_ID +
+                ",\n\taddress='" + address + '\'' +
+                "\n}";
     }
 }

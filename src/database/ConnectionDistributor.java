@@ -1,5 +1,6 @@
 package database;
 
+import entities.Customer;
 import entities.Employee;
 import entities.User;
 
@@ -19,6 +20,8 @@ public interface ConnectionDistributor {
     Vector<Employee> employees = new Vector<>();
 
 
+
+    /*---------------------- User -----------------------*/
     // Parsing the user data obtained from oracle server
     static void parseUserSet(ResultSet userSet) throws SQLException {
         while (userSet.next()) {
@@ -30,6 +33,9 @@ public interface ConnectionDistributor {
         return userSet.next() ? new User(userSet.getInt(1), userSet.getString(2), userSet.getString(3), userSet.getString(4), userSet.getString(5)) : null;
     }
 
+
+
+    /*---------------------- Employee -----------------------*/
 
     static Employee getAndParseEmployee(String email) throws SQLException {
         assert con != null;
@@ -87,13 +93,13 @@ public interface ConnectionDistributor {
     }
 
 
-    /*AGGREGATION QUERIES*/
+    /*-------------------- Aggregation -------------------*/
     static int getUsersCount() throws SQLException {
         assert con != null;
 
         ResultSet result = con.createStatement().executeQuery("SELECT COUNT(*) FROM USERS");
 
-        return result.next() ? result.getInt(1) : -1;
+        return result.next() ? result.getInt(1) : 0;
     }
 
     static int getEmployeesCount() throws SQLException {
@@ -101,8 +107,29 @@ public interface ConnectionDistributor {
 
         ResultSet result = con.createStatement().executeQuery("SELECT COUNT(*) FROM EMPLOYEE");
 
-        return result.next() ? result.getInt(1) : -1;
+        return result.next() ? result.getInt(1) : 0;
     }
+
+
+    static int getCustomerCount() throws SQLException {
+        assert con != null;
+
+        ResultSet result = con.createStatement().executeQuery("SELECT COUNT(*) FROM CUSTOMER");
+
+        return result.next() ? result.getInt(1) : 0;
+    }
+
+
+    static int getItemCount() throws SQLException {
+        assert con != null;
+
+        ResultSet result = con.createStatement().executeQuery("SELECT COUNT(*) FROM ITEM");
+
+        return result.next() ? result.getInt(1) : 0;
+    }
+
+
+    /*----------------------------------------------------------------*/
 
     /*ADD EMPLOYEE*/
     static int insertEmployee(Employee employee) throws SQLException {
@@ -126,4 +153,39 @@ public interface ConnectionDistributor {
         userInsert.executeUpdate();
         return empInsert.executeUpdate();
     }
+
+
+    /*---------------------- CUSTOMER -----------------------*/
+    static int insertCustomer(Customer customer) throws SQLException {
+        assert con != null;
+
+        PreparedStatement userInsert = con.prepareStatement("INSERT INTO USERS VALUES (?,?,?,?,?)");
+        userInsert.setInt(1, customer.getU_id());
+        userInsert.setString(2, customer.getType());
+        userInsert.setString(3, customer.getCnic());
+        userInsert.setString(4, customer.getPassword());
+        userInsert.setString(5, customer.getEmail());
+
+
+        PreparedStatement custInsert = con.prepareStatement("INSERT INTO CUSTOMER VALUES (?,?,?)");
+        custInsert.setInt(1, customer.getU_id());
+        custInsert.setInt(2, customer.getC_ID());
+        custInsert.setString(3, customer.getAddress());
+
+        userInsert.executeUpdate();
+        return custInsert.executeUpdate();
+    }
+
+    /*----------------------- ITEM ------------------------*/
+//    static void insertItem(Item item) throws SQLException {
+//        assert con != null;
+//
+//        PreparedStatement userInsert = con.prepareStatement("INSERT INTO ITEM VALUES (?,?,?,?,?,?,?)");
+//        userInsert.setInt(1, customer.getU_id());
+//        userInsert.setString(2, customer.getType());
+//        userInsert.setString(3, customer.getCnic());
+//        userInsert.setString(4, customer.getPassword());
+//        userInsert.setString(5, customer.getEmail());
+//
+//    }
 }

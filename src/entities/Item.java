@@ -3,16 +3,16 @@ package entities;
 public class Item {
 
     // Attributes
-    private int itemId;
-    private String size;
+    private final int ITM_ID;
+    private int size;
     private double price;
     private String type;
     private String imagePath;
 
 
     // Constructors
-    public Item(int itemId, String size, double price, String type, String imagePath) {
-        this.itemId = itemId;
+    public Item(int ITM_ID, int size, double price, String type, String imagePath) {
+        this.ITM_ID = ITM_ID;
         this.size = size;
         this.price = price;
         this.type = type;
@@ -20,19 +20,16 @@ public class Item {
     }
 
     // getters and setters
-    public int getItemId() {
-        return itemId;
+    public int getITM_ID() {
+        return ITM_ID;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
-    }
 
-    public String getSize() {
+    public int getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(int size) {
         this.size = size;
     }
 
@@ -64,12 +61,12 @@ public class Item {
     // Override Methods
     @Override
     public String toString() {
-        return "Item{" +
-                "itemId=" + itemId +
-                ", size='" + size + '\'' +
-                ", price=" + price +
-                ", type='" + type + '\'' +
-                '}';
+        return "Item{\n" +
+                "\titemId=" + ITM_ID +
+                ",\n\tsize='" + size + '\'' +
+                ",\n\tprice=" + price +
+                ",\n\ttype='" + type + '\'' +
+                "\n}";
     }
 
 }

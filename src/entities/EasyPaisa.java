@@ -1,40 +1,29 @@
 package entities;
 
 public class EasyPaisa extends PaymentMode{
-    private String mobileNumber;
-    private String IBAN;
+    private final int mobileNumber;
+    private final int P_ID;
 
-    // Constructor
-    public EasyPaisa(int paymentModeId, String mobileNumber, String IBAN) {
-        super(paymentModeId);
+    public EasyPaisa(int c_ID, int p_ID, String mode, int mobileNumber, int p_ID1) {
+        super(c_ID, p_ID, mode);
         this.mobileNumber = mobileNumber;
-        this.IBAN = IBAN;
+        P_ID = p_ID1;
     }
 
-    // getter and setter
-    public String getMobileNumber() {
+    public int getMobileNumber() {
         return mobileNumber;
     }
 
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
+    @Override
+    public int getP_ID() {
+        return P_ID;
     }
-
-    public String getIBAN() {
-        return IBAN;
-    }
-
-    public void setIBAN(String IBAN) {
-        this.IBAN = IBAN;
-    }
-
-    // Override Methods
 
     @Override
     public String toString() {
-        return "EasyPaisa{" + super.toString() +
-                "mobileNumber='" + mobileNumber + '\'' +
-                ", IBAN='" + IBAN + '\'' +
-                '}';
+        return "EasyPaisa{\n" +
+                "\tmobileNumber=" + mobileNumber +
+                ",\n\tP_ID=" + P_ID +
+                "\n}";
     }
 }

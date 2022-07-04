@@ -2,28 +2,40 @@ package entities;
 
 public class PaymentMode {
     // attributes
-    private int paymentModeId;
+    private final int C_ID;
+    private final int P_ID;
+    private String mode;
 
     // Constructor
-    public PaymentMode(int paymentModeId) {
-        this.paymentModeId = paymentModeId;
+    public PaymentMode(int c_ID, int p_ID, String mode) {
+        C_ID = c_ID;
+        P_ID = p_ID;
+        this.mode = mode;
     }
 
     // getter and setter
-    public int getPaymentModeId() {
-        return paymentModeId;
+    public int getC_ID() {
+        return C_ID;
     }
 
-    public void setPaymentModeId(int paymentModeId) {
-        this.paymentModeId = paymentModeId;
+    public int getP_ID() {
+        return P_ID;
     }
 
-    // Override methods
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
 
     @Override
     public String toString() {
-        return "PaymentMode{" +
-                "paymentModeId=" + paymentModeId +
-                '}';
+        return "PaymentMode{\n" +
+                "\tC_ID=" + C_ID +
+                ",\n\tP_ID=" + P_ID +
+                ",\n\tmode='" + mode + '\'' +
+                "\n}";
     }
 }
