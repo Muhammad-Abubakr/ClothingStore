@@ -1,7 +1,7 @@
 package app.controllers;
 
 import app.events.UserEvent;
-import database.ConnectionDistributor;
+import database.OracleConnectionDistributer;
 import entities.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +21,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 
-public class SignInController implements ConnectionDistributor {
+public class SignInController implements OracleConnectionDistributer {
 
     @FXML
     private VBox signInRoot;
@@ -78,7 +78,7 @@ public class SignInController implements ConnectionDistributor {
         prepareStatement.setString(2, password.getText());
 
         ResultSet result = prepareStatement.executeQuery();
-        User authenticatedUser = ConnectionDistributor.parseUser(result);
+        User authenticatedUser = OracleConnectionDistributer.parseUser(result);
 
         System.out.println(authenticatedUser);
 

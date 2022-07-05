@@ -33,9 +33,9 @@ public class PaymentMode {
     @Override
     public String toString() {
         return "PaymentMode{\n" +
-                "\tC_ID=" + C_ID +
-                ",\n\tP_ID=" + P_ID +
-                ",\n\tmode='" + mode + '\'' +
-                "\n}";
+                "\t\tC_ID=" + C_ID +
+                ",\n\t\tP_ID=" + P_ID +
+                ",\n\t\tmode='" + mode + '\'' +
+                "\t\n}";
     }
 }

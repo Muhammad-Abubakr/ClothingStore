@@ -1,7 +1,7 @@
 package entities;
 
 public class Brand {
-    private final int brandID;
+    private int brandID;
     private String brandName;
 
     public Brand(int brandID, String brandName) {
@@ -11,6 +11,10 @@ public class Brand {
 
     public int getBrandID() {
         return brandID;
+    }
+
+    public void setBrandID(int brandID) {
+        this.brandID = brandID;
     }
 
     public String getBrandName() {

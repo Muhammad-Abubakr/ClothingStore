@@ -1,7 +1,10 @@
 package app.controllers;
 
 import app.events.UserEvent;
+import database.OracleConnectionDistributer;
+import entities.Customer;
 import entities.Item;
+import entities.Order;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +24,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.time.Instant;
 import java.util.ConcurrentModificationException;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -161,6 +167,28 @@ public class StoreController implements Initializable {
             ((Stage) logOutButton.getScene().getWindow()).close();
         });
 
+
+        // Listening for the event if user places order this code will get executed
+        orderButton.addEventHandler(UserEvent.PLACE_ORDER, e -> {
+            try {
+                /*-------------- Order Placement ---------------*/
+                // adding -1 to paymentCount as this gets called once
+                // the payment mode has been added
+                int pid = OracleConnectionDistributer.getPaymentCount() - 1;
+                int cid = ((Customer) UserEvent.getUser()).getC_ID();
+                int oid = OracleConnectionDistributer.getOrderCount();
+
+                Order order = new Order(oid, cid, pid, Date.valueOf(String.valueOf(Date.from(Instant.now()))));
+                OracleConnectionDistributer.insertOrder(order);
+
+                /*---------------------------------------------*/
+                /*------------------- Sales -------------------*/
+
+
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
     }
 
     // Setting an alert when the parent window is being closed by the user

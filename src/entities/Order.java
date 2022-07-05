@@ -1,6 +1,7 @@
 package entities;
 
-import oracle.sql.TIMESTAMP;
+
+import java.sql.Date;
 
 public class Order {
     private static int orderId;
@@ -9,10 +10,10 @@ public class Order {
     private final int C_ID;
     private final int P_ID;
 
-    private TIMESTAMP dateTime;
+    private java.sql.Date dateTime;
 
     // Constructor
-    public Order(int O_ID, String description, int c_id, int p_id, TIMESTAMP dateTime) {
+    public Order(int O_ID, int c_id, int p_id, Date dateTime) {
         C_ID = c_id;
         P_ID = p_id;
         this.O_ID = O_ID;
@@ -39,11 +40,11 @@ public class Order {
         return P_ID;
     }
 
-    public TIMESTAMP getDateTime() {
+    public Date getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(TIMESTAMP dateTime) {
+    public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
 

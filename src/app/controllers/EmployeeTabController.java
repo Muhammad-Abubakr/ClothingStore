@@ -1,18 +1,23 @@
 package app.controllers;
 
-import database.ConnectionDistributor;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import database.OracleConnectionDistributer;
 import entities.Employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import org.bson.Document;
 
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class EmployeeTabController implements Initializable, ConnectionDistributor {
+public class EmployeeTabController implements Initializable, OracleConnectionDistributer {
 
     // Add Employee Attributes
     public TextField cnicFieldAdd;
@@ -45,13 +50,22 @@ public class EmployeeTabController implements Initializable, ConnectionDistribut
     // Saving the Employee Instance
     private Employee queriedEmployee;
 
+    MongoCollection<Document> collection;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         // Initializing List of value for Update Employee ComboBox
         initializeUpdateCombox();
-    }
 
+        // Mongo Initialization
+        String uri = "mongodb+srv://saadi:roy@cluster0.25mazny.mongodb.net";
+        try (MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("ClothingStore");
+            collection = database.getCollection("User");
+
+        }
+    }
     // Search
     @FXML
     private void searchEmployee(ActionEvent e) throws SQLException {
@@ -80,7 +94,7 @@ public class EmployeeTabController implements Initializable, ConnectionDistribut
     }
 
     private String getEmployeeDetails(String email) throws SQLException {
-        Employee e = ConnectionDistributor.getAndParseEmployee(email);
+        Employee e = OracleConnectionDistributer.getAndParseEmployee(email);
         if (e != null) {
             queriedEmployee = e;
             return e.toString();
@@ -130,8 +144,8 @@ public class EmployeeTabController implements Initializable, ConnectionDistribut
                 // todo - add check for empty date Picker value
             else {
                 if (newDateUpdate.isVisible())
-                    ConnectionDistributor.updateEmployee(queriedEmployee.getU_id(), attributeUpdate.getValue(), newDateUpdate.getValue());
-                int result = ConnectionDistributor.updateEmployee(queriedEmployee.getU_id(), attributeUpdate.getValue(), newValueFieldUpdate.getText());
+                    OracleConnectionDistributer.updateEmployee(queriedEmployee.getU_id(), attributeUpdate.getValue(), newDateUpdate.getValue());
+                int result = OracleConnectionDistributer.updateEmployee(queriedEmployee.getU_id(), attributeUpdate.getValue(), newValueFieldUpdate.getText());
 
                 if (result == 1) clearUpdateForm();
             }
@@ -150,16 +164,17 @@ public class EmployeeTabController implements Initializable, ConnectionDistribut
     /*REMOVE EMPLOYEE*/
     @FXML
     private void removeEmployee() throws SQLException {
-        Date leaveDate = Date.valueOf(removeLeaveDate.getValue());
 
-        int result = ConnectionDistributor.removeEmployee(queriedEmployee.getE_ID(), leaveDate);
+        int result = OracleConnectionDistributer.removeEmployee(queriedEmployee.getE_ID());
 
         if (result == 1) resetRemoveForm();
+
+        /*-------------------- Mongo ----------------------*/
+//        collection.deleteOne({"CNIC":queriedEmployee.getCnic()});
     }
 
     @FXML
     private void resetRemoveForm() {
-        removeLeaveDate.setValue(null);
         queriedTextAreaRemove.clear();
         searchFieldRemove.clear();
     }
@@ -167,8 +182,8 @@ public class EmployeeTabController implements Initializable, ConnectionDistribut
     @FXML
     private void addEmployee() throws SQLException {
 
-        final int uid = ConnectionDistributor.getUsersCount();
-        final int eid = ConnectionDistributor.getEmployeesCount();
+        final int uid = OracleConnectionDistributer.getUsersCount();
+        final int eid = OracleConnectionDistributer.getEmployeesCount();
 
         String cnic = cnicFieldAdd.getText();
         String email = emailFieldAdd.getText();
@@ -178,9 +193,15 @@ public class EmployeeTabController implements Initializable, ConnectionDistribut
 
         Employee newEmployee = new Employee(uid, eid, joiningDate, null, "Employee", cnic, password, email, salary);
 
-        int result = ConnectionDistributor.insertEmployee(newEmployee);
+        int result = OracleConnectionDistributer.insertEmployee(newEmployee);
 
         if (result == 1) resetAddForm();
+
+
+        /*----------------- MONGO ---------------------*/
+        Document employee = new Document("CNIC", cnic).append("Email", email).append("Password", password).append("Type", "Employee").append("Joining_Date", joiningDate.toString()).append("leave_date", "").append("Salary", salary);
+        collection.insertOne(employee);
+
     }
 
     @FXML

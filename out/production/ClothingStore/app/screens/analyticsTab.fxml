@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.AnalyticsTabController">
+   <content>
+      <GridPane alignment="CENTER" hgap="20.0" vgap="20.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="231.0" minHeight="0.0" prefHeight="213.0" valignment="CENTER" vgrow="ALWAYS" />
+          <RowConstraints maxHeight="319.0" minHeight="10.0" prefHeight="225.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f2f2f2;" GridPane.rowIndex="1">
+               <children>
+                  <Label layoutX="126.0" layoutY="21.0" text="Employees">
+                     <font>
+                        <Font name="Comic Sans MS" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalEmployees" layoutX="24.0" layoutY="91.0" text="Total = " />
+                  <Label fx:id="employeesPresent" layoutX="24.0" layoutY="109.0" text="Present = " />
+                  <Label fx:id="employeesLeft" layoutX="24.0" layoutY="127.0" text="Left = " />
+               </children>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.8039215803146362" green="0.8039215803146362" blue="0.8039215803146362" />
+                     </color>
+                  </DropShadow>
+               </effect></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f2f2f2;" GridPane.columnIndex="1">
+               <children>
+                  <Label layoutX="117.0" layoutY="14.0" text="PURCHASED">
+                     <font>
+                        <Font name="Comic Sans MS" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalPurchased" layoutX="28.0" layoutY="83.0" text="Total = " />
+                  <Label fx:id="averagePurchasePrice" layoutX="28.0" layoutY="101.0" text="Average Purchase Price = " />
+                  <Label fx:id="mostPurchasedItem" layoutX="28.0" layoutY="119.0" text="Most Purchased Item = " />
+                  <Label fx:id="leastPurchasedItem" layoutX="28.0" layoutY="137.0" text="Least Purchased Item = " />
+               </children>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.8026315569877625" green="0.8026315569877625" blue="0.8026315569877625" />
+                     </color>
+                  </DropShadow>
+               </effect></AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F2F2F3;">
+               <children>
+                  <Label layoutX="136.0" layoutY="14.0" text="SALES">
+                     <font>
+                        <Font name="Comic Sans MS" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalSales" layoutX="28.0" layoutY="84.0" text="Total = " />
+                  <Label fx:id="averageSalesPrice" layoutX="28.0" layoutY="102.0" text="Average Sales Price = " />
+                  <Label fx:id="mostSoldItem" layoutX="28.0" layoutY="120.0" text="Most Sold Item = " />
+                  <Label fx:id="leastSoldItem" layoutX="28.0" layoutY="138.0" text="Least Sold Item = " />
+               </children>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.8039215803146362" green="0.8039215803146362" blue="0.8039215803146362" />
+                     </color>
+                  </DropShadow>
+               </effect></AnchorPane>
+         </children>
+      </GridPane>
+   </content>
+</ScrollPane>

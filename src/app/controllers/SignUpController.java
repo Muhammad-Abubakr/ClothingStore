@@ -1,6 +1,6 @@
 package app.controllers;
 
-import database.ConnectionDistributor;
+import database.OracleConnectionDistributer;
 import entities.Customer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 
 import java.sql.SQLException;
 
-public class SignUpController implements ConnectionDistributor {
+public class SignUpController implements OracleConnectionDistributer {
 
     // Root of SignUp
     @FXML
@@ -34,12 +34,12 @@ public class SignUpController implements ConnectionDistributor {
         else if (!password.getText().equals(confirmPassword.getText())) passwordsMismatchAlert();
         else {
 
-            final int uid = ConnectionDistributor.getUsersCount();
-            final int cid = ConnectionDistributor.getCustomerCount();
+            final int uid = OracleConnectionDistributer.getUsersCount();
+            final int cid = OracleConnectionDistributer.getCustomerCount();
 
-            Customer cust = new Customer(uid,null,email.getText(),password.getText(),null,cid,null);
+            Customer cust = new Customer(uid, null, email.getText(), password.getText(), null, cid, null);
 
-            ConnectionDistributor.insertCustomer(cust);
+            OracleConnectionDistributer.insertCustomer(cust);
         }
     }
 

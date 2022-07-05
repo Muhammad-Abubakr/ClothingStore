@@ -4,26 +4,19 @@ import java.sql.Date;
 
 public class CreditCard extends PaymentMode {
     // attributes
-    private final int IBAN;
-    private final int P_ID;
+    private final String IBAN;
     private final int CVV;
     private final Date expirationDate;
 
-    public CreditCard(int c_ID, int p_ID, String mode, int IBAN, int p_ID1, int CVV, Date expirationDate) {
+    public CreditCard(int c_ID, int p_ID, String mode, String IBAN, int CVV, Date expirationDate) {
         super(c_ID, p_ID, mode);
         this.IBAN = IBAN;
-        P_ID = p_ID1;
         this.CVV = CVV;
         this.expirationDate = expirationDate;
     }
 
-    public int getIBAN() {
+    public String getIBAN() {
         return IBAN;
-    }
-
-    @Override
-    public int getP_ID() {
-        return P_ID;
     }
 
     public int getCVV() {
@@ -36,9 +29,8 @@ public class CreditCard extends PaymentMode {
 
     @Override
     public String toString() {
-        return "CreditCard{\n" +
+        return "CreditCard{\n\t" + super.toString() +
                 "\tIBAN=" + IBAN +
-                ",\n\tP_ID=" + P_ID +
                 ",\n\tCVV=" + CVV +
                 ",\n\texpirationDate=" + expirationDate +
                 "\n}";

@@ -90,7 +90,6 @@
                         </HBox>
                         <TextArea fx:id="queriedTextAreaRemove" editable="false" prefHeight="200.0" prefWidth="200.0"
                                   promptText="Queried User will be displayed here"/>
-                        <DatePicker fx:id="removeLeaveDate" promptText="Leave Date"/>
                         <ButtonBar>
                            <VBox.margin>
                               <Insets top="20.0"/>

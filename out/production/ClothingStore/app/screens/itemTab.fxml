@@ -4,49 +4,57 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane fx:controller="app.controllers.ItemTabController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.ItemTabController">
   <tabs>
     <Tab text="Add Item">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextField layoutX="66.0" layoutY="140.0" promptText="Size" fx:id="itemSize" />
-                  <TextField layoutX="66.0" layoutY="176.0" promptText="Price" fx:id="itemPrice" />
-                  <TextField layoutX="66.0" layoutY="211.0" promptText="Image Path" fx:id="imagePath"/>
-                  <RadioButton layoutX="69.0" layoutY="290.0" mnemonicParsing="false" text="Male" fx:id="maleRadioButton"/>
-                  <RadioButton layoutX="141.0" layoutY="290.0" mnemonicParsing="false" text="Female" fx:id="femaleRadioButton"/>
-                  <Label layoutX="66.0" layoutY="255.0" text="Gender">
+                  <TextField fx:id="itemSize" layoutX="66.0" layoutY="140.0" promptText="Size" />
+                  <TextField fx:id="itemPrice" layoutX="66.0" layoutY="176.0" promptText="Price" />
+                  <TextField fx:id="imagePath" layoutX="66.0" layoutY="211.0" promptText="Image Path" />
+                  <RadioButton fx:id="maleRadioButton" layoutX="69.0" layoutY="297.0" mnemonicParsing="false" text="Male" textFill="#434343">
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font></RadioButton>
+                  <RadioButton fx:id="femaleRadioButton" layoutX="141.0" layoutY="297.0" mnemonicParsing="false" text="Female" textFill="#434343" />
+                  <Label layoutX="66.0" layoutY="262.0" text="Gender" textFill="#5e5e5e">
                      <font>
                         <Font name="Comic Sans MS" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="66.0" layoutY="99.0" text="Item Details">
+                  <Label layoutX="66.0" layoutY="83.0" text="Item Details" textFill="#5e5e5e">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="281.0" layoutY="102.0" text="Stock">
+                  <Label layoutX="281.0" layoutY="83.0" text="Stock" textFill="#5e5e5e">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="275.0" layoutY="139.0" prefHeight="25.0" prefWidth="150.0" promptText="Quantity" fx:id="itemQuantity" />
-                  <DatePicker layoutX="274.0" layoutY="179.0" promptText="Purchase Date" fx:id="purchaseDate"/>
-                  <Label layoutX="478.0" layoutY="102.0" text="Brand">
+                  <TextField fx:id="stockItemQuantity" layoutX="275.0" layoutY="139.0" prefHeight="25.0" prefWidth="150.0" promptText="Quantity" />
+                   <Separator layoutX="245.0" layoutY="88.0" orientation="VERTICAL" prefHeight="200.0" />
+                   <TextField fx:id="stockItemPrice" layoutX="275.0" layoutY="175.0" promptText="Purchase Price" />
+                   <Separator layoutX="455.0" layoutY="89.0" orientation="VERTICAL" prefHeight="200.0" />
+
+                   <DatePicker fx:id="stockPurchaseDate" layoutX="275.0" layoutY="211.0" promptText="Purchase Date" />
+                  <Label layoutX="478.0" layoutY="82.0" text="Brand" textFill="#5e5e5e">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="478.0" layoutY="138.0" prefHeight="25.0" prefWidth="150.0" promptText="Brand Name" fx:id="brandName"/>
-                  <Button layoutX="561.0" layoutY="371.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Save" fx:id="save"/>
-                  <Button layoutX="483.0" layoutY="371.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Clear" fx:id="clear"/>
-               </children></AnchorPane>
+                  <TextField fx:id="brandName" layoutX="478.0" layoutY="138.0" prefHeight="25.0" prefWidth="150.0" promptText="Brand Name" />
+                  <Button fx:id="save" onAction="#addItem" layoutX="561.0" layoutY="371.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Save" />
+                  <Button fx:id="clear" layoutX="483.0" layoutY="371.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Clear" />
+                 </children></AnchorPane>
       </content>
     </Tab>
     <Tab text="Remove Item">
